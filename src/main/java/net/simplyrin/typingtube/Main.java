@@ -1,6 +1,9 @@
 package net.simplyrin.typingtube;
 
+import java.awt.Desktop;
+import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.Scanner;
 
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.HttpConfiguration;
@@ -35,6 +38,28 @@ public class Main {
 	}
 
 	public void run() {
+		System.out.println("-------------------------------------------");
+		System.out.println("Type '/OSL' to display license information.");
+		System.out.println("-------------------------------------------");
+
+		Thread thread = new Thread(() -> {
+			Scanner scanner = new Scanner(System.in);
+
+			while (true) {
+				String cmd = scanner.nextLine();
+
+				if (cmd.equals("/osl")) {
+					Desktop desktop = Desktop.getDesktop();
+					try {
+						desktop.browse(new URI("https://github.com/SimplyRin/TypingTubeRP/tree/master/osl"));
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		thread.start();
+
 		ServletContextHandler servletHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
 		servletHandler.setMaxFormContentSize(128 * 128);
