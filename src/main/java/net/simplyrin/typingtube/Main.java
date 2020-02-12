@@ -23,6 +23,8 @@ import net.simplyrin.typingtube.servlet.PostTask;
 /**
  * Created by SimplyRin on 2020/02/09.
  *
+ * Copyright (c) 2020 SimplyRin
+ *
  * Eclipse Public License - v 2.0
  */
 public class Main {
